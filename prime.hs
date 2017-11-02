@@ -146,6 +146,4 @@ fib x = take x fibList
 triangles :: Integer -> [(Integer, Integer, Integer)]
 triangles n = [(a,b,c) | a <- [1..n], b <- [1..n], c <- [1..n], a^2+b^2 == c^2, (a <= b) ]
 
-triangles' :: Integer -> [(Integer, Integer, Integer)]
-triangles' n = [(a,b,c) | a <- [1..n], b <- [1..n], c <- [1..n], a^2+b^2 == c^2]
 

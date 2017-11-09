@@ -146,4 +146,8 @@ fib x = take x fibList
 triangles :: Integer -> [(Integer, Integer, Integer)]
 triangles n = [(a,b,c) | a <- [1..n], b <- [1..n], c <- [1..n], a^2+b^2 == c^2, (a <= b) ]
 
-
+solveQuadratic :: (Float, Float, Float) -> (Float, Float)
+solveQuadratic (a,b,c) | a == 0 = error "not quadratic"
+                       | d < 0 = error "not real" 
+                       | otherwise = ( (-b + sqrt d)/(2*a), (b + sqrt d)/(2*a)) 
+                            where d = b^2 -4*a*c

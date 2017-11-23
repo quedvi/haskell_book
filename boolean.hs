@@ -77,3 +77,20 @@ formula4 p q = (p <+> q) <+> q
 
 formula5 :: Bool -> Bool -> Bool
 formula5 p q = p <=> ((p <+> q) <+> q)
+
+
+-- chapter 2.8
+
+every, some :: [a] -> (a -> Bool) -> Bool
+every xs p = all p xs
+some xs p = any p xs
+
+
+uniqe :: (a -> Bool) -> [a] -> Bool
+uniqe p x = length (filter p x) == 1
+
+parity :: [Bool] -> Bool
+parity x = even (length (filter (== True) x))
+
+evenNR :: (a -> Bool) -> [a] -> Bool
+evenNR p x = even (length (filter p x ))

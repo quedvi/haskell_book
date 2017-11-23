@@ -92,5 +92,17 @@ uniqe p x = length (filter p x) == 1
 parity :: [Bool] -> Bool
 parity x = even (length (filter (== True) x))
 
+parity' :: [Bool] -> Bool 
+parity' [] = True
+parity' (x:xs) = x /= (parity xs)
+
 evenNR :: (a -> Bool) -> [a] -> Bool
 evenNR p x = even (length (filter p x ))
+
+evenNR' :: (a -> Bool) -> [a] -> Bool
+evenNR' p = parity . map p
+
+
+-- wrong (def of p57 Expressing Uniqeness) because the uniqueness of a number is defined by its value AND its position in the list!!
+uniq :: (Eq a) => (a -> Bool) -> [a] -> Bool 
+uniq p xs = some xs p && some xs (\x -> every xs (\ z -> (p z) ==> (x == z)))
